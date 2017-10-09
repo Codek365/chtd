@@ -79,7 +79,7 @@ class ControllerExtensionModuleLazada extends Controller {
 
 
 
-		if (isset($results)) {
+		if (isset($results) && $results != false) {
 			foreach ($results['Products'] as $result) {
 			// if (is_file(DIR_IMAGE . $result['image'])) {
 			// 	$image = $this->model_tool_image->resize($result['image'], 40, 40);
@@ -188,16 +188,18 @@ class ControllerExtensionModuleLazada extends Controller {
 		$curl = new Curl();
 		$curl->get($url);
 		if ($curl->error) {
-		    echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
-
+		    $this->error['warning'] = 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
 		} else {
 			$callbackdata = $curl->response->SuccessResponse->Body;
-			$callbackdata = json_decode( json_encode($callbackdata), true);
-			foreach ($callbackdata['Products'] as $key => $value) {
-				array_push($data, $value['Attributes']);
-			}
-			
+			if ($curl->response == true) {
+				$callbackdata = json_decode( json_encode($callbackdata), true);
+				foreach ($callbackdata['Products'] as $key => $value) {
+					array_push($data, $value['Attributes']);
+				}
+				return $callbackdata;
+			} 
+				
 		}
-		return $callbackdata;
+		return !$this->error;
 	}
 }
