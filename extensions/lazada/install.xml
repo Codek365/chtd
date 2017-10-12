@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Lazada Manager</name>
+	<code>lazada_manager</code>
+	<version>1.0</version>
+	<author>Codek365</author>
+	<link>http://www.lab129.com/</link>
+ 	<file path="admin/controller/common/column_left.php">
+		<operation>
+		<search index="0"><![CDATA[$catalog = array();]]></search>
+			<add position="before"><![CDATA[
+            $lazada = array();
+            
+            if ($this->user->hasPermission('access', 'catalog/category')) {
+                $lazada[] = array(
+                    'name'     => 'Lazada Product',
+                    'href'     => $this->url->link('extension/module/lazada', 'user_token=' . $this->session->data['user_token'], true),
+                    'children' => array()       
+                );
+            }
+
+            if ($lazada) {
+				$data['menus'][] = array(
+					'id'       => 'menu-catalog',
+					'icon'	   => 'fa-tags', 
+					'name'	   => 'Lazada Manager',
+					'href'     => '',
+					'children' => $lazada
+				);
+			}
+			]]></add>
+		</operation>
+	</file>
+</modification>

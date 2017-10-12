@@ -15,7 +15,26 @@ class ControllerCommonColumnLeft extends Controller {
 				'href'     => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true),
 				'children' => array()
 			);
-			
+			// //lazada component
+   //          $lazada = array();
+            
+   //          if ($this->user->hasPermission('access', 'catalog/category')) {
+   //              $lazada[] = array(
+   //                  'name'     => 'Lazada Product',
+   //                  'href'     => $this->url->link('extension/module/lazada', 'user_token=' . $this->session->data['user_token'], true),
+   //                  'children' => array()       
+   //              );
+   //          }
+
+   //          if ($lazada) {
+			// 	$data['menus'][] = array(
+			// 		'id'       => 'menu-catalog',
+			// 		'icon'	   => 'fa-tags', 
+			// 		'name'	   => 'Lazada Manager',
+			// 		'href'     => '',
+			// 		'children' => $lazada
+			// 	);
+			// }
 			// Catalog
 			$catalog = array();
 			
