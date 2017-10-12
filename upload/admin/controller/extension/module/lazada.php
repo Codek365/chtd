@@ -8,6 +8,8 @@ class ControllerExtensionModuleLazada extends Controller {
 
 	private $userid  = 'codek365@gmail.com';
 
+	// private $url_api = "https://api.sellercenter.lazada.vn?";
+	private $url_api = "http://api.com/getproduct.json?";
 
 	public function index() {
 		$this->load->language('extension/module/lazada');
@@ -181,7 +183,7 @@ class ControllerExtensionModuleLazada extends Controller {
 		// Build Query String
 		$queryString = http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
 		// Replace with the URL of your API host.
-		$url = "https://api.sellercenter.lazada.vn?" . $queryString;
+		$url = $this->url_api . $queryString;
 
 		$data = array();
 
