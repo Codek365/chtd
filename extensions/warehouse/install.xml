@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Warehouse</name>
+    <code>Warehouse</code>
+    <version>1.0</version>
+    <author>Codek365</author>
+    <link>http://www.lab129.com/</link>
+    <file path="admin/controller/common/column_left.php">
+        <operation>
+            <search><![CDATA[$catalog = array();]]></search>
+            <add position="before"><![CDATA[
+            //lazada component
+            $warehouse = array();
+            
+            if ($this->user->hasPermission('access', 'warehouse/setting')) {
+                $warehouse[] = array(
+                    'name'     => 'warehouse Setting',
+                    'href'     => $this->url->link('warehouse/setting', 'user_token=' . $this->session->data['user_token'], true),
+                    'children' => array()       
+                );
+            }
+
+            if ($warehouse) {
+                $data['menus'][] = array(
+                    'id'       => 'menu-catalog',
+                    'icon'     => 'fa-tags', 
+                    'name'     => 'Warehouse Manager',
+                    'href'     => '',
+                    'children' => $warehouse
+                );
+            }
+            ]]></add>
+        </operation>
+    </file>  
+</modification>
