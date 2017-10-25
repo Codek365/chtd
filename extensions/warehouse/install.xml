@@ -14,8 +14,15 @@
             
             if ($this->user->hasPermission('access', 'warehouse/setting')) {
                 $warehouse[] = array(
-                    'name'     => 'warehouse Setting',
+                    'name'     => 'Warehouse Setting',
                     'href'     => $this->url->link('warehouse/setting', 'user_token=' . $this->session->data['user_token'], true),
+                    'children' => array()       
+                );
+            }
+            if ($this->user->hasPermission('access', 'warehouse/import_goods')) {
+                $warehouse[] = array(
+                    'name'     => 'Warehouse Import Goods',
+                    'href'     => $this->url->link('warehouse/import_goods', 'user_token=' . $this->session->data['user_token'], true),
                     'children' => array()       
                 );
             }
