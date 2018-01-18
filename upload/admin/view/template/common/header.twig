@@ -39,6 +39,10 @@
         <a href="{{ home }}" class="navbar-brand"><img src="view/image/logo.png" alt="{{ heading_title }}" title="{{ heading_title }}"/></a></div>
       <a href="#" id="button-menu" class="hidden-md hidden-lg"><span class="fa fa-bars"></span></a>
       {% if logged %}
+        <ul class="nav navbar-nav navbar-left">
+          <li><a id="toggle-left-menu"><i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+          </a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ image }}" alt="{{ firstname }} {{ lastname }}" title="{{ username }}" id="user-profile" class="img-circle"/> <span class="hidden-xs">{{ firstname }} {{ lastname }}</span> <i class="fa fa-caret-down fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-right">
@@ -61,3 +65,23 @@
 
     </div>
   </header>
+<script type="text/javascript">
+
+$("#toggle-left-menu").on('click', function() {
+
+  if ($("#column-left").hasClass('hide') == false) {
+    $("#column-left").addClass('hide');
+    $("#content").css('margin-left', '0');
+    $(".navbar-header").hide();
+  } else {
+    $("#column-left").removeClass('hide');
+    $("#content").css('margin-left', '235px');
+    $(".navbar-header").show();
+  }
+  
+});
+
+</script>
+<style type="text/css">
+
+</style>
